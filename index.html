@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitDiffViewer — Side-by-Side Diff Tool</title>
+  <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <span class="logo">⚡ GitDiffViewer</span>
+    <div class="controls">
+      <button id="btn-sample">Load Sample</button>
+      <button id="btn-clear">Clear</button>
+      <select id="view-mode">
+        <option value="split">Split View</option>
+        <option value="unified">Unified View</option>
+      </select>
+      <select id="theme-select">
+        <option value="dark">Dark</option>
+        <option value="light">Light</option>
+      </select>
+      <label class="toggle"><input type="checkbox" id="toggle-whitespace" /> Ignore whitespace</label>
+      <button id="btn-copy-diff">Copy Diff</button>
+    </div>
+  </header>
+  <div class="stats-bar" id="stats-bar" style="display:none">
+    <span id="stat-files">0 files</span>
+    <span class="stat-add" id="stat-add">+0</span>
+    <span class="stat-del" id="stat-del">-0</span>
+    <span id="stat-chunks">0 chunks</span>
+  </div>
+  <div class="input-area" id="input-area">
+    <div class="input-col">
+      <div class="input-header">Original (A)</div>
+      <textarea id="input-a" placeholder="Paste original code here..."></textarea>
+    </div>
+    <div class="input-col">
+      <div class="input-header">Modified (B)</div>
+      <textarea id="input-b" placeholder="Paste modified code here..."></textarea>
+    </div>
+    <button id="btn-diff" class="btn-diff-big">Compute Diff ▶</button>
+  </div>
+  <div class="diff-area hidden" id="diff-area">
+    <div class="diff-toolbar">
+      <button id="btn-back">← Edit</button>
+      <span id="chunk-nav">
+        <button id="btn-prev-chunk">▲ Prev</button>
+        <span id="chunk-counter">Chunk 0/0</span>
+        <button id="btn-next-chunk">▼ Next</button>
+      </span>
+      <input id="search-input" placeholder="Search in diff…" />
+      <button id="btn-search">Find</button>
+      <span id="search-count"></span>
+    </div>
+    <div id="diff-output"></div>
+  </div>
+</div>
+<script src="src/diff.js"></script>
+<script src="src/renderer.js"></script>
+<script src="src/search.js"></script>
+<script src="src/app.js"></script>
+</body>
+</html>

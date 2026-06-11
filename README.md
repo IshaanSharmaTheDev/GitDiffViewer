@@ -1,48 +1,35 @@
 # GitDiffViewer
 
-A clean, colorized git diff viewer that runs entirely in the browser. Paste a diff or drag in a `.patch` file and it renders it properly — added lines in green, removed in red, hunks clearly separated.
-
-I made this because `git diff` in the terminal is fine but sometimes you want to review a diff properly without having to push to GitHub just to use their PR view.
+A browser-based side-by-side and unified diff viewer built with a custom Myers diff algorithm — no dependencies, no server required.
 
 ## Features
+- **Myers diff algorithm** — industry-standard O(ND) diff, same as Git
+- **Split view** — side-by-side original vs modified
+- **Unified view** — classic patch-style single pane
+- **Chunk navigation** — jump between changed sections
+- **In-diff search** — highlight and scroll through matches
+- **Ignore whitespace** mode
+- **Stats bar** — lines added/removed/chunks
+- **Light and dark themes**
+- **Copy diff** to clipboard
 
-- Paste raw diff text and it renders instantly
-- Drag and drop `.patch` or `.diff` files
-- Side-by-side and unified view toggle
-- Line numbers on both sides
-- Syntax highlighting per file type (detects from filename in diff header)
-- Copy button on each file section
-- Works completely offline
+## File Structure
+```
+GitDiffViewer/
+├── index.html
+├── styles/main.css
+└── src/
+    ├── diff.js      # Myers diff algorithm + hunk builder
+    ├── renderer.js  # HTML table rendering (split + unified)
+    ├── search.js    # In-diff text search and highlight
+    └── app.js       # App controller
+```
 
 ## Usage
+Open `index.html`, paste two code versions into the panels, and click **Compute Diff**.
 
-```
-git clone https://github.com/AadhhyaSharma/GitDiffViewer
-cd GitDiffViewer
-# open index.html
-```
+## Tech
+Vanilla JS, CSS3. No npm, no frameworks. Zero runtime dependencies.
 
-Or just go online to the demo link in the repo description.
-
-## Getting a diff to paste
-
-```bash
-# Changes in your working directory
-git diff
-
-# Difference between two commits
-git diff abc123 def456
-
-# Save to a file
-git diff > my_changes.patch
-```
-
-Then paste the output into the viewer.
-
-## Why browser-based?
-
-I wanted something I could share with people who don't have git installed. Link them to the file, they can open it, paste the diff, done. No server, no backend, no auth.
-
----
-
-Built this in a day. Nothing fancy but it does exactly what it's supposed to.
+## License
+MIT
