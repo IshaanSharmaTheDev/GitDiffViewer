@@ -1,3 +1,7 @@
+## 🚀 Live Demo: [GitDiffViewer](https://ishaansharmathedev.github.io/GitDiffViewer/)
+
+> Try it in your browser: **[https://ishaansharmathedev.github.io/GitDiffViewer/](https://ishaansharmathedev.github.io/GitDiffViewer/)**
+
 # GitDiffViewer
 
 A browser-based side-by-side and unified diff viewer built with a custom Myers diff algorithm — no dependencies, no server required.
